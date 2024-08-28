@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Data Form</title>
+      <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, rgb(0, 255, 255), #fad0c4, #ff9a9e);
+            background-size: 400% 400%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeInScale 0.8s forwards ease-in-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 24px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="date"]:focus {
+            border-color: #e67e22;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            margin-top: 20px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center; /* Center the links */
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #1a1a1a; /* Darker color */
+            margin: 0 15px;
+            font-size: 18px; /* Larger font size */
+            font-weight: bold; /* Broader text */
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #e67e22; /* Color on hover */
+        }
+
+        .search-container {
+            position: relative;
+            width: 300px; /* Adjust width as needed */
+        }
+
+        .search-container input[type="text"] {
+            width: calc(100% - 60px);
+            padding: 12px 20px;
+            margin: 0;
+            border-radius: 50px;
+            border: 1px solid #6c5b7b;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input[type="text"]:focus {
+            border-color: #f8b400;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .search-container button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 60px;
+            border: none;
+            background-color: #f8b400;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container button:hover {
+            background-color: #f57c00;
+            transform: scale(1.1);
+        }
+
+        .search-container button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .main-content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .welcome-heading {
+            font-size: 36px; /* Increase font size for prominence */
+            color: #fff;
+            margin-bottom: 40px; /* Increase space below the heading */
+            font-weight: bold; /* Make text bold */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="Insertion.html">Insert</a>
+        <a href="datafetch">Update</a>
+        <a href="datafetch">Delete</a>
+        <a href="datafetch">View All Data</a>
+        <form action="SearchServlet" method="get" class="search-container">
+            <input type="text" id="name" name="name" placeholder="Enter name for search" required>
+            <button type="submit">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21l-5.5-5.5a8.5 8.5 0 1 0-1.4 1.4L21 21zM10 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z" fill="#fff"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <div class="main-content">
+        <h1 class="welcome-heading">Welcome to My Project</h1>
+
+        <div class="container">
+            <h1>Add Student Information</h1>
+
+            <form action="StudentServlet" method="post">
+                <input type="text" name="fname" placeholder="Enter First Name" required>
+                <input type="text" name="lname" placeholder="Enter Last Name" required>
+                <input type="date" name="bdate" placeholder="Enter Birthdate" required>
+                <input type="text" name="mobile" placeholder="Enter Mobile Number" required>
+                <input type="email" name="email" placeholder="Enter Your Email" required>
+                <input type="password" name="password" placeholder="Enter Your Password" required>
+                <button type="submit">Insert</button>
+            </form>
+            <div class="form-footer">
+                <form action="datafetch" method="get">
+                    <button type="submit">View Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

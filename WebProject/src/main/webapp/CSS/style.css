@@ -1,0 +1,81 @@
+@charset "ISO-8859-1";
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #e0f7fa, #80deea);
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 16px 24px;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(120deg, #ff6f61, #d84315);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f8e9;
+}
+
+tr:hover {
+    background-color: #e8f5e9;
+    transform: scale(1.03);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+a.delete-button {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: white;
+    background-color: #ff4081;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+a.delete-button:hover {
+    background-color: #c51162;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(-5px) scale(1.05);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.1);
+    }
+    100% {
+        transform: translateY(-5px) scale(1.05);
+    }
+}
